@@ -15,7 +15,9 @@ public class register extends javax.swing.JFrame {
      */
     public register() {
         initComponents();
+        txtError.setVisible(false);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,6 +74,11 @@ public class register extends javax.swing.JFrame {
         registerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerBtnMouseClicked(evt);
+            }
+        });
+        registerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerBtnActionPerformed(evt);
             }
         });
 
@@ -194,20 +201,9 @@ public class register extends javax.swing.JFrame {
     private void accountTf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountTf2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_accountTf2ActionPerformed
-
+    
     private void registerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBtnMouseClicked
-        String username = accountTf1.getText();
-        String password = accountTf2.getText();
-        mainScreen main = new mainScreen();
-        if (username.equals(user) && password.equals(pw)){
-            main.setVisible(true);
-            setVisible(false);
-        }
-        else{
-            accountLbError.setVisible(true);
-            accountTf1.setText("");
-            accountTf2.setText("");
-        }
+        
     }//GEN-LAST:event_registerBtnMouseClicked
 
     private void accountTf3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountTf3ActionPerformed
@@ -220,8 +216,35 @@ public class register extends javax.swing.JFrame {
 
     private void returnBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBtn1ActionPerformed
         // TODO add your handling code here:
+        account a = new account();
+        a.setVisible(true);
+        setVisible(false);
+            
     }//GEN-LAST:event_returnBtn1ActionPerformed
-
+    public String user,pw;
+    
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+        // TODO add your handling code here:
+        account a = new account();
+        String username = accountTf1.getText();
+        String password1 = accountTf2.getText();
+        String password2 = accountTf3.getText();
+        if (password1.equals(password2)) {
+            user = username;
+            pw = password1;
+            a.setVisible(true);
+            setVisible(false);
+        }
+        else{
+            txtError.setVisible(true);
+        }
+    }//GEN-LAST:event_registerBtnActionPerformed
+    public String getUsername(){
+        return user;
+    }
+    public String getPassword(){
+        return pw;
+    }
     /**
      * @param args the command line arguments
      */

@@ -38,6 +38,7 @@ public class account extends javax.swing.JFrame {
         accountLbError = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         registerLb = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -89,6 +90,8 @@ public class account extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("jLabel3");
+
         javax.swing.GroupLayout accountPanelLayout = new javax.swing.GroupLayout(accountPanel);
         accountPanel.setLayout(accountPanelLayout);
         accountPanelLayout.setHorizontalGroup(
@@ -121,6 +124,10 @@ public class account extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(accountLabel1)
                 .addGap(63, 63, 63))
+            .addGroup(accountPanelLayout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         accountPanelLayout.setVerticalGroup(
             accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +150,9 @@ public class account extends javax.swing.JFrame {
                 .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginBtn)
                     .addComponent(registerLb))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,13 +178,17 @@ public class account extends javax.swing.JFrame {
     private void accountTf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountTf2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_accountTf2ActionPerformed
-
-    String user="",pw="";
+     register r = new register();
+        String user=r.getUsername();
+        String pw = r.getPassword();
+        jLabel3.setText(""+user);
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
+        
+        jLabel3.setText(""+user);
         String username = accountTf1.getText();
         String password = accountTf2.getText();
         mainScreen main = new mainScreen();
-        if (username.equals(user) && password.equals(pw)){
+        if (username.equals(user) && password.equals(pw)|| username.equals("adminac")&& password.equals("123456789")){
             main.setVisible(true);
             setVisible(false);
         }
@@ -187,8 +200,8 @@ public class account extends javax.swing.JFrame {
     }//GEN-LAST:event_loginBtnMouseClicked
 
     private void registerLbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerLbMouseClicked
-        register re = new register();
-        re.setVisible(true);
+        register rr = new register();
+        rr.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_registerLbMouseClicked
 
@@ -239,6 +252,7 @@ public class account extends javax.swing.JFrame {
     private javax.swing.JLabel accountUsername1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JToggleButton loginBtn;
     private javax.swing.JLabel registerLb;
     // End of variables declaration//GEN-END:variables
