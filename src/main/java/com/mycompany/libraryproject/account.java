@@ -33,12 +33,14 @@ public class account extends javax.swing.JFrame {
         accountUsername = new javax.swing.JLabel();
         accountUsername1 = new javax.swing.JLabel();
         accountTf1 = new javax.swing.JTextField();
-        accountTf2 = new javax.swing.JTextField();
         loginBtn = new javax.swing.JToggleButton();
         accountLbError = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         registerLb = new javax.swing.JLabel();
+        passwordTxt = new javax.swing.JLabel();
+        userTxt = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        accountTf2 = new javax.swing.JPasswordField();
 
         jLabel1.setText("jLabel1");
 
@@ -59,12 +61,6 @@ public class account extends javax.swing.JFrame {
         accountTf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accountTf1ActionPerformed(evt);
-            }
-        });
-
-        accountTf2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                accountTf2ActionPerformed(evt);
             }
         });
 
@@ -90,51 +86,71 @@ public class account extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("jLabel3");
+        passwordTxt.setText("     ");
+        passwordTxt.setVisible(false);
+
+        userTxt.setText("     ");
+        userTxt.setVisible(false);
+
+        jLabel3.setText("       ");
+
+        accountTf2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accountTf2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout accountPanelLayout = new javax.swing.GroupLayout(accountPanel);
         accountPanel.setLayout(accountPanelLayout);
         accountPanelLayout.setHorizontalGroup(
             accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(accountPanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(31, 31, 31)
                 .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(accountPanelLayout.createSequentialGroup()
-                        .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(accountPanelLayout.createSequentialGroup()
-                                .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(accountUsername)
-                                    .addComponent(accountUsername1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(accountTf2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(accountTf1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(accountPanelLayout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(registerLb)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(41, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, accountPanelLayout.createSequentialGroup()
+                        .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(accountUsername)
+                            .addComponent(accountUsername1))
+                        .addGap(18, 18, 18)
+                        .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(accountTf1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(accountTf2, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(accountPanelLayout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(accountPanelLayout.createSequentialGroup()
+                        .addComponent(registerLb)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(accountPanelLayout.createSequentialGroup()
+                        .addComponent(userTxt)
+                        .addGap(95, 95, 95)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(passwordTxt)
+                        .addGap(75, 75, 75))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountPanelLayout.createSequentialGroup()
+                .addContainerGap(49, Short.MAX_VALUE)
+                .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(accountLbError)
-                        .addGap(33, 33, 33))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(accountLabel1)
-                .addGap(63, 63, 63))
-            .addGroup(accountPanelLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountPanelLayout.createSequentialGroup()
+                        .addComponent(accountLabel1)
+                        .addGap(78, 78, 78))))
         );
         accountPanelLayout.setVerticalGroup(
             accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(accountPanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addComponent(accountLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(16, 16, 16)
                 .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(accountLbError)
                     .addComponent(jLabel2))
@@ -146,13 +162,15 @@ public class account extends javax.swing.JFrame {
                 .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(accountUsername1)
                     .addComponent(accountTf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginBtn)
                     .addComponent(registerLb))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordTxt)
+                    .addComponent(userTxt)
+                    .addComponent(jLabel3)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,9 +181,7 @@ public class account extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(accountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(accountPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -174,28 +190,25 @@ public class account extends javax.swing.JFrame {
     private void accountTf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountTf1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_accountTf1ActionPerformed
-
-    private void accountTf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountTf2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_accountTf2ActionPerformed
-     register r = new register();
-        String user=r.getUsername();
-        String pw = r.getPassword();
-        jLabel3.setText(""+user);
+     
+     
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
-        
-        jLabel3.setText(""+user);
+        register r = new register();
+        String user=userTxt.getText();
+        String pw = passwordTxt.getText();
         String username = accountTf1.getText();
         String password = accountTf2.getText();
         mainScreen main = new mainScreen();
-        if (username.equals(user) && password.equals(pw)|| username.equals("adminac")&& password.equals("123456789")){
+        if ((username.equals(user) && password.equals(pw)) && !username.equals("")&& !password.equals("") || username.equals("admin")&& password.equals("admin")){
             main.setVisible(true);
+            main.txtName.setText(username);
             setVisible(false);
         }
         else{
             accountLbError.setVisible(true);
             accountTf1.setText("");
             accountTf2.setText("");
+            
         }
     }//GEN-LAST:event_loginBtnMouseClicked
 
@@ -204,6 +217,10 @@ public class account extends javax.swing.JFrame {
         rr.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_registerLbMouseClicked
+
+    private void accountTf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountTf2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_accountTf2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,21 +257,22 @@ public class account extends javax.swing.JFrame {
         });
         
     }
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accountLabel1;
     private javax.swing.JLabel accountLbError;
     private javax.swing.JPanel accountPanel;
     private javax.swing.JTextField accountTf1;
-    private javax.swing.JTextField accountTf2;
+    private javax.swing.JPasswordField accountTf2;
     private javax.swing.JLabel accountUsername;
     private javax.swing.JLabel accountUsername1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JToggleButton loginBtn;
+    public javax.swing.JLabel passwordTxt;
     private javax.swing.JLabel registerLb;
+    public javax.swing.JLabel userTxt;
     // End of variables declaration//GEN-END:variables
 
 }

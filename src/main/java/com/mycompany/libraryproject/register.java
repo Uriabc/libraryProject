@@ -177,7 +177,7 @@ public class register extends javax.swing.JFrame {
                 .addGroup(accountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerBtn)
                     .addComponent(returnBtn1))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,30 +221,28 @@ public class register extends javax.swing.JFrame {
         setVisible(false);
             
     }//GEN-LAST:event_returnBtn1ActionPerformed
-    public String user,pw;
+
     
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         // TODO add your handling code here:
         account a = new account();
-        String username = accountTf1.getText();
+        String account = accountTf1.getText();
         String password1 = accountTf2.getText();
         String password2 = accountTf3.getText();
-        if (password1.equals(password2)) {
-            user = username;
-            pw = password1;
+        if (password1.equals(password2)&& !password1.equals("") && !account.equals("")) {
+            a.userTxt.setText(accountTf1.getText());
+            a.passwordTxt.setText(accountTf2.getText());
             a.setVisible(true);
             setVisible(false);
         }
         else{
             txtError.setVisible(true);
+            accountTf2.setText("");
+            accountTf3.setText("");
         }
+        
     }//GEN-LAST:event_registerBtnActionPerformed
-    public String getUsername(){
-        return user;
-    }
-    public String getPassword(){
-        return pw;
-    }
+ 
     /**
      * @param args the command line arguments
      */
@@ -285,8 +283,8 @@ public class register extends javax.swing.JFrame {
     private javax.swing.JPanel accountPanel;
     private javax.swing.JLabel accountPassword1;
     private javax.swing.JLabel accountPassword2;
-    private javax.swing.JTextField accountTf1;
-    private javax.swing.JTextField accountTf2;
+    public javax.swing.JTextField accountTf1;
+    public javax.swing.JTextField accountTf2;
     private javax.swing.JTextField accountTf3;
     private javax.swing.JLabel accountUsername;
     private javax.swing.JLabel jLabel2;
