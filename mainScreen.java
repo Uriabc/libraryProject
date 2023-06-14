@@ -9,13 +9,18 @@ package com.mycompany.libraryproject;
  * @author urdo5941
  */
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 public class mainScreen extends javax.swing.JFrame {
 
     /**
      * Creates new form mainScreen
      */
+    DefaultTableModel model;
+    DefaultTableModel model2;
     public mainScreen() {
         initComponents();
+        model2= (DefaultTableModel) jTable2.getModel();
+        model= (DefaultTableModel) jTable1.getModel();
     }
 
     /**
@@ -46,7 +51,20 @@ public class mainScreen extends javax.swing.JFrame {
         tfSearch = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         btnSearch = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanelManage = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        tfDelBook = new javax.swing.JTextField();
+        tfTakeBook = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        btnDelBook = new javax.swing.JButton();
+        btnTakeBook = new javax.swing.JButton();
+        tfReturn = new javax.swing.JTextField();
+        btnReturn = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -180,9 +198,39 @@ public class mainScreen extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Title", "Author", "Year", "ISBN" }));
 
         btnSearch.setText("SEARCH");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title", "Author", "Year", "ISBN", "Available"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanelSearchLayout = new javax.swing.GroupLayout(jPanelSearch);
         jPanelSearch.setLayout(jPanelSearchLayout);
@@ -190,11 +238,14 @@ public class mainScreen extends javax.swing.JFrame {
             jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelSearchLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(tfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(btnSearch)
+                .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanelSearchLayout.createSequentialGroup()
+                        .addComponent(tfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnSearch)))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanelSearchLayout.setVerticalGroup(
@@ -205,23 +256,170 @@ public class mainScreen extends javax.swing.JFrame {
                     .addComponent(tfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         mainPanel.addTab("SEARCH", jPanelSearch);
+
+        jPanelManage.setBackground(new java.awt.Color(255, 153, 153));
+        jPanelManage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelManageMouseClicked(evt);
+            }
+        });
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#ID", "Title", "Author", "Year", "ISBN", "Available"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+            jTable2.getColumnModel().getColumn(3).setResizable(false);
+            jTable2.getColumnModel().getColumn(4).setResizable(false);
+            jTable2.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        tfDelBook.setText("Insert Book's ID");
+        tfDelBook.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfDelBookMouseClicked(evt);
+            }
+        });
+        tfDelBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfDelBookActionPerformed(evt);
+            }
+        });
+
+        tfTakeBook.setText("Insert Book's ID");
+        tfTakeBook.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfTakeBookMouseClicked(evt);
+            }
+        });
+        tfTakeBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfTakeBookActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setText("DELETE BOOK");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setText("TAKE BOOK");
+
+        btnDelBook.setText("DELETE");
+        btnDelBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDelBookActionPerformed(evt);
+            }
+        });
+
+        btnTakeBook.setText("TAKE");
+        btnTakeBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTakeBookActionPerformed(evt);
+            }
+        });
+
+        tfReturn.setText("Insert Book's ID");
+        tfReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfReturnMouseClicked(evt);
+            }
+        });
+        tfReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfReturnActionPerformed(evt);
+            }
+        });
+
+        btnReturn.setText("TAKE");
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setText("RETURN BOOK");
 
         javax.swing.GroupLayout jPanelManageLayout = new javax.swing.GroupLayout(jPanelManage);
         jPanelManage.setLayout(jPanelManageLayout);
         jPanelManageLayout.setHorizontalGroup(
             jPanelManageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 758, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
+            .addGroup(jPanelManageLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(182, 182, 182)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
+            .addGroup(jPanelManageLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanelManageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(tfDelBook, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(btnDelBook, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(94, 94, 94)
+                .addGroup(jPanelManageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfTakeBook, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTakeBook, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelManageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tfReturn, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(btnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
         jPanelManageLayout.setVerticalGroup(
             jPanelManageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 393, Short.MAX_VALUE)
+            .addGroup(jPanelManageLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(jPanelManageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelManageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfDelBook, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfTakeBook, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelManageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDelBook)
+                    .addComponent(btnTakeBook)
+                    .addComponent(btnReturn))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        mainPanel.addTab("tab3", jPanelManage);
+        mainPanel.addTab("YOUR LIBRARY", jPanelManage);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
         jLabel3.setText("LIBRARY SYSTEM MANAGEMENT");
@@ -288,6 +486,7 @@ public class mainScreen extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnClearActionPerformed
     ArrayList<bookClass> list = new ArrayList<bookClass>();
+    
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         String title = tfTitle.getText();
@@ -297,9 +496,11 @@ public class mainScreen extends javax.swing.JFrame {
         if (title.equals("INFORMATION REQUIRES")|| author.equals("INFORMATION REQUIRES")||year.equals("INFORMATION REQUIRES")||ISBN.equals("INFORMATION REQUIRES")){
             
         }
-        else if (!title.equals("")&& !author.equals("")&&!year.equals("")||!ISBN.equals("")){
+        else if (!title.equals("")&& !author.equals("")&& !year.equals("")&&!ISBN.equals("")){
             bookClass a = new bookClass(title,author,year,ISBN);
             list.add(a);
+            model2.insertRow(model2.getRowCount(),new Object[]{list.size(),title,author,year,ISBN,list.get(0).isAvailable()});
+            
             clearForm();
         }
         
@@ -318,9 +519,12 @@ public class mainScreen extends javax.swing.JFrame {
             }
             
         }
-        txtNumBook.setText(""+list.size());
+        
+        updateNum();
     }//GEN-LAST:event_btnAddActionPerformed
-
+    private void updateNum(){
+        txtNumBook.setText(""+list.size());
+    }
     private void tfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfSearchActionPerformed
@@ -336,6 +540,178 @@ public class mainScreen extends javax.swing.JFrame {
             tfSearch.setText("Search...");
         }
     }//GEN-LAST:event_jPanelSearchMouseClicked
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        model.setRowCount(0);
+        String input = tfSearch.getText();
+        if (jComboBox1.getSelectedItem().equals("Title")){
+            search("Title",input);
+        }
+        else if (jComboBox1.getSelectedItem().equals("Author")){
+            search("Author",input);
+        }
+        else if (jComboBox1.getSelectedItem().equals("Year")){
+            search("Year",input);
+        }
+        else if (jComboBox1.getSelectedItem().equals("ISBN")){
+            search("ISBN",input);
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+    private boolean isNumeric(String str){
+        return str != null && str.matches("[0-9.]+");
+    }
+    private void btnDelBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelBookActionPerformed
+        // TODO add your handling code here:
+        String in = tfDelBook.getText();
+        if (isNumeric(in)){
+            Integer input =Integer.parseInt(tfDelBook.getText());
+            if(list.isEmpty()){
+                tfDelBook.setText("You need a book");
+            }
+            else if (input<= list.size()){
+                list.remove(input-1);
+                model2.setRowCount(0);
+                for (int i = 0; i<list.size();i++){
+                    model2.addRow(new Object[]{i+1,list.get(i).getTitle(),list.get(i).getAuthor(),list.get(i).getPublicationYear(),list.get(i).getIsbn(),list.get(i).isAvailable()});
+                }
+                updateNum();
+                tfDelBook.setText("Insert Book's ID");
+            }
+            else{
+                tfDelBook.setText("Invalid ID");
+            }
+        }
+        else{
+            tfDelBook.setText("Invalid ID");
+        }
+    }//GEN-LAST:event_btnDelBookActionPerformed
+
+    private void tfDelBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDelBookActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfDelBookActionPerformed
+
+    private void jPanelManageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelManageMouseClicked
+        // TODO add your handling code here:
+        tfDelBook.setText("Insert Book's ID");
+        tfTakeBook.setText("Insert Book's ID");
+        tfReturn.setText("Insert Book's ID");
+    }//GEN-LAST:event_jPanelManageMouseClicked
+
+    private void btnTakeBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTakeBookActionPerformed
+        // TODO add your handling code here:
+        
+        String in = tfTakeBook.getText();
+        if (isNumeric(in)){
+            Integer input =Integer.parseInt(tfTakeBook.getText());
+            if(list.isEmpty()){
+                tfTakeBook.setText("You need a book");
+            }
+            else if (input<= list.size()){
+                list.get(input-1).setAvailable(false);
+                model2.setRowCount(0);
+                for (int i = 0; i<list.size();i++){
+                    model2.addRow(new Object[]{i+1,list.get(i).getTitle(),list.get(i).getAuthor(),list.get(i).getPublicationYear(),list.get(i).getIsbn(),list.get(i).isAvailable()});
+                    tfTakeBook.setText("Insert Book's ID");
+                }
+                
+            }
+            else{
+                tfTakeBook.setText("Invalid ID");
+            }
+        }
+        else{
+            tfTakeBook.setText("Invalid ID");
+        }
+    }//GEN-LAST:event_btnTakeBookActionPerformed
+
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        // TODO add your handling code here:
+        String in = tfReturn.getText();
+        if (isNumeric(in)){
+            Integer input =Integer.parseInt(tfReturn.getText());
+            if(list.isEmpty()){
+                tfReturn.setText("You need a book");
+            }
+            else if (input<= list.size()){
+                list.get(input-1).setAvailable(true);
+                model2.setRowCount(0);
+                for (int i = 0; i<list.size();i++){
+                    model2.addRow(new Object[]{i+1,list.get(i).getTitle(),list.get(i).getAuthor(),list.get(i).getPublicationYear(),list.get(i).getIsbn(),list.get(i).isAvailable()});
+                }
+                
+                tfReturn.setText("Insert Book's ID");
+            }
+            else{
+                tfReturn.setText("Invalid ID");
+            }
+        }
+        else{
+            tfReturn.setText("Invalid ID");
+        }
+    }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void tfTakeBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTakeBookActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfTakeBookActionPerformed
+
+    private void tfReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfReturnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfReturnActionPerformed
+
+    private void tfDelBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfDelBookMouseClicked
+        // TODO add your handling code here:
+        tfDelBook.setText("");
+        tfTakeBook.setText("Insert Book's ID");
+        tfReturn.setText("Insert Book's ID");
+    }//GEN-LAST:event_tfDelBookMouseClicked
+
+    private void tfTakeBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfTakeBookMouseClicked
+        // TODO add your handling code here:
+        tfTakeBook.setText("");
+        tfDelBook.setText("Insert Book's ID");
+        tfReturn.setText("Insert Book's ID");
+    }//GEN-LAST:event_tfTakeBookMouseClicked
+
+    private void tfReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfReturnMouseClicked
+        // TODO add your handling code here:
+        tfReturn.setText("");
+        tfTakeBook.setText("Insert Book's ID");
+        tfDelBook.setText("Insert Book's ID");
+    }//GEN-LAST:event_tfReturnMouseClicked
+    private void search(String type, String input){
+        
+        if (type.equals("Title")) {
+            for (int i = 0; i< list.size();i++){
+                if (list.get(i).getTitle().toLowerCase().contains(input.toLowerCase())){
+                    model.addRow(new Object[]{list.get(i).getTitle(),list.get(i).getAuthor(),list.get(i).getPublicationYear(),list.get(i).getIsbn(),list.get(i).isAvailable()});
+                }
+            }
+        }
+        else if (type.equals("Author")){
+            for (int i = 0; i< list.size();i++){
+                if (list.get(i).getAuthor().toLowerCase().contains(input.toLowerCase())){
+                    model.addRow(new Object[]{list.get(i).getTitle(),list.get(i).getAuthor(),list.get(i).getPublicationYear(),list.get(i).getIsbn(),list.get(i).isAvailable()});
+                }
+            }
+        }
+        else if (type.equals("Year")){
+            for (int i = 0; i< list.size();i++){
+                if (list.get(i).getPublicationYear().toLowerCase().contains(input.toLowerCase())){
+                    model.addRow(new Object[]{list.get(i).getTitle(),list.get(i).getAuthor(),list.get(i).getPublicationYear(),list.get(i).getIsbn(),list.get(i).isAvailable()});
+                }
+            }
+        }
+        else if (type.equals("ISBN")){
+            for (int i = 0; i< list.size();i++){
+                if (list.get(i).getIsbn().toLowerCase().contains(input.toLowerCase())){
+                    model.addRow(new Object[]{list.get(i).getTitle(),list.get(i).getAuthor(),list.get(i).getPublicationYear(),list.get(i).getIsbn(),list.get(i).isAvailable()});
+                }
+            }
+        }
+        
+    }
+        
     private void clearForm(){
         tfTitle.setText("");
         tfAuthor.setText("");
@@ -380,23 +756,36 @@ public class mainScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnAdd;
     private javax.swing.JToggleButton btnClear;
+    private javax.swing.JButton btnDelBook;
+    private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnTakeBook;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelAddBook;
     private javax.swing.JPanel jPanelManage;
     private javax.swing.JPanel jPanelSearch;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTabbedPane mainPanel;
     private javax.swing.JTextField tfAuthor;
+    private javax.swing.JTextField tfDelBook;
     private javax.swing.JTextField tfISBN;
+    private javax.swing.JTextField tfReturn;
     private javax.swing.JTextField tfSearch;
+    private javax.swing.JTextField tfTakeBook;
     private javax.swing.JTextField tfTitle;
     private javax.swing.JTextField tfYear;
     public javax.swing.JLabel txtName;

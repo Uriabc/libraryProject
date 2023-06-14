@@ -15,7 +15,7 @@ public class bookClass {
     private String publicationYear;
     private boolean isAvailable;
 
-    public bookClass(String title, String author, String isbn, String publicationYear) {
+    public bookClass(String title, String author, String publicationYear,String isbn) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
@@ -72,8 +72,8 @@ public class bookClass {
         return "Book{" +
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
-                ", isbn='" + isbn + '\'' +
                 ", publicationYear=" + publicationYear +
+                ", isbn='" + isbn + '\'' +
                 ", isAvailable=" + isAvailable +
                 '}';
     }

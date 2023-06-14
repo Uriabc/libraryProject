@@ -201,7 +201,7 @@ public class account extends javax.swing.JFrame {
         mainScreen main = new mainScreen();
         if ((username.equals(user) && password.equals(pw)) && !username.equals("")&& !password.equals("") || username.equals("admin")&& password.equals("admin")){
             main.setVisible(true);
-            main.txtName.setText(username);
+            main.txtName.setText(username.toUpperCase());
             setVisible(false);
         }
         else{
