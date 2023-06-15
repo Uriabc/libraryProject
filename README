@@ -24,3 +24,20 @@ From the dropdown menu, select a search type from "Title", "Author", "Year", or 
 Click on the search button
 The books that fit your search term along with the search type will be shown in the book list. All other information regarding that book will be shown as well
 (Example: if you search for books that were published in 2017, the books published in 2017 will appear but it will also show their Title, Author, and ISBN)
+
+BOOKS CAN BE MARKED AS TAKEN, RETURNED, AND DELETED IN THE "YOUR LIBRARY" TAB
+
+To take a book:
+Click on the "YOUR LIBRARY" tab
+Enter the book ID of the book you would like to take in the field with "TAKE BOOK" labelled above it 
+Click the "TAKE" button
+
+To return a book:
+Click on the "YOUR LIBRARY" tab
+Enter the book ID of the book you have taken in the field with "RETURN BOOK" labelled above it 
+Click the "RETURN" button
+
+To permanently delete a book from the library system:
+Click on the "YOUR LIBRARY" tab
+Enter the book ID of the book you would like to delete from the system in the field with "DELETE BOOK" labelled above it
+Click the "DELETE" button
