@@ -1,0 +1,26 @@
+Library Management System - How to Use 
+Upon running the program the "Account Login" screen will appear
+Here you have the option to log in using the default account:
+
+Username: admin
+Password: admin
+
+Alternatively, you can also create your own account and make your own credientials by clicking the "Register" button.
+This will open another GUI screen where you can enter a username and password desired in the associated fields. You will need to confirm the password by typing it again in the "Confirm Password" field. 
+Click the Register button to save these credientials and return to the log in screen.
+Proceed to put the username and password you created in the associated field and click login. 
+
+Once you have logged in, the library system GUI will open. The default opened tab will be the "ADD BOOK" tab. 
+
+To add a book:
+Click on the "ADD BOOK" tab
+Fields will open where you need to type the Title, Author, Publication Year, and ISBN of the book. The ISBN is an ID that is used for storing if the book is available or taken.
+Once you have typed the relevant information in the fields, click ADD BOOK and the book will be added into the management system.
+
+To search for a book:
+Click on the "SEARCH" tab
+Enter a search term into the the search field at the top. 
+From the dropdown menu, select a search type from "Title", "Author", "Year", or "ISBN"
+Click on the search button
+The books that fit your search term along with the search type will be shown in the book list. All other information regarding that book will be shown as well
+(Example: if you search for books that were published in 2017, the books published in 2017 will appear but it will also show their Title, Author, and ISBN)
